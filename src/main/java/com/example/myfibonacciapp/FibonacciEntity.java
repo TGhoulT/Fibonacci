@@ -1,6 +1,7 @@
 package com.example.myfibonacciapp;
 
 import javax.persistence.*;
+import java.math.BigInteger;
 
 @Entity
 @Table(name = "fibonacci_entity")
@@ -14,7 +15,7 @@ public class FibonacciEntity {
     private Integer index;
 
     @Column(nullable = false)
-    private Integer value;
+    private BigInteger value;
 
     public Long getId() {
         return id;
@@ -32,11 +33,11 @@ public class FibonacciEntity {
         this.index = index;
     }
 
-    public Integer getValue() {
+    public BigInteger getValue() {
         return value;
     }
 
-    public void setValue(Integer value) {
+    public void setValue(BigInteger value) {
         this.value = value;
     }
 }

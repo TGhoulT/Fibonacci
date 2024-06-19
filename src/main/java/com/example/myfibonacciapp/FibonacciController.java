@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,10 +16,10 @@ public class FibonacciController {
     private FibonacciService fibonacciService;
 
     @GetMapping("/fibonacci")
-    public Map<String, Integer> getFibonacciNumber(@RequestParam int index) {
-        int value = fibonacciService.getFibonacciNumber(index);
+    public Map<String, Object> getFibonacciNumber(@RequestParam int index) {
+        BigInteger value = fibonacciService.getFibonacciNumber(index);
 
-        Map<String, Integer> result = new HashMap<>();
+        Map<String, Object> result = new HashMap<>();
         result.put("index", index);
         result.put("value", value);
 
