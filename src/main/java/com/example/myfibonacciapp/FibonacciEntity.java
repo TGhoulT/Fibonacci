@@ -16,7 +16,6 @@ public class FibonacciEntity {
     @Column(nullable = false)
     private Integer value;
 
-    // Геттеры и сеттеры
     public Long getId() {
         return id;
     }

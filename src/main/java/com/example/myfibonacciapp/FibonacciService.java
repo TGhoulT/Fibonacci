@@ -14,12 +14,12 @@ public class FibonacciService {
     private FibonacciCalculator calculator;
 
     public Integer getFibonacciNumber(int index) {
-        // Проверка, что индекс больше или равен 1
+        //проверка, что индекс больше или равен 1
         if (index < 1) {
             throw new IllegalArgumentException("Index should be greater or equal to 1");
         }
 
-        // Поиск в базе данных
+        //поиск в базе данных
         Optional<FibonacciEntity> entityOptional = repository.findByIndex(index);
         if (entityOptional.isPresent()) {
             return entityOptional.get().getValue();
