@@ -1,6 +1,8 @@
 package com.example.myfibonacciapp;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +19,7 @@ public class FibonacciController {
 
     @GetMapping("/fibonacci")
     public Map<String, Object> getFibonacciNumber(@RequestParam int index) {
+
         BigInteger value = fibonacciService.getFibonacciNumber(index);
 
         Map<String, Object> result = new HashMap<>();
@@ -25,4 +28,13 @@ public class FibonacciController {
 
         return result;
     }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<Map<String, String>> handleIllegalArgumentException(IllegalArgumentException e) {
+        Map<String, String> errorResponse = new HashMap<>();
+        errorResponse.put("error", e.getMessage());
+        return ResponseEntity.badRequest().body(errorResponse);
+    }
 }
+
+
